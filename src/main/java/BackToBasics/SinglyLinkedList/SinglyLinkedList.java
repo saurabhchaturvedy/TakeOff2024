@@ -97,6 +97,70 @@ public class SinglyLinkedList {
     }
 
 
+    public ListNode deleteAtEnd(ListNode head) {
+
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+
+        ListNode temp = head;
+
+        while (temp.next.next != null) {
+
+            temp = temp.next;
+        }
+
+        temp.next = null;
+
+        return head;
+    }
+
+
+    public boolean search(ListNode head, int item) {
+
+        if (head == null) return false;
+        ListNode temp = head;
+
+        while (temp != null) {
+            if (temp.data == item) {
+                return true;
+            }
+            temp = temp.next;
+        }
+
+
+        return false;
+    }
+
+
+    public ListNode deleteNodeAtPosition(ListNode head, int position) {
+
+        if (head == null) {
+            return null;
+        }
+
+        if (head.next == null || position == 1) {
+            return null;
+        }
+
+
+        ListNode temp = head;
+        int count = 0;
+        while (count < position - 1) {
+            count++;
+            temp = temp.next;
+        }
+
+
+        ListNode tempNext = temp.next.next;
+        temp.next = null;
+        temp.next = tempNext;
+
+        return head;
+    }
+
+
     public static void main(String[] args) {
 
 
@@ -132,5 +196,18 @@ public class SinglyLinkedList {
         ListNode listAfterNodeDeletedAtStart = singlyLinkedList.deleteAtStart(listNodeAtPosition);
         System.out.println();
         singlyLinkedList.print(listAfterNodeDeletedAtStart);
+
+
+        ListNode listAfterDeletionAtEnd = singlyLinkedList.deleteAtEnd(listAfterNodeDeletedAtStart);
+        System.out.println();
+        singlyLinkedList.print(listAfterDeletionAtEnd);
+
+
+        ListNode listAfterDeletingAtPosition = singlyLinkedList.deleteNodeAtPosition(listAfterDeletionAtEnd, 4);
+        System.out.println();
+        singlyLinkedList.print(listAfterDeletingAtPosition);
+
+
+        System.out.println("Is Elemnt 88 present ?? : "+singlyLinkedList.search(listAfterDeletingAtPosition,88));
     }
 }
