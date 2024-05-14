@@ -41,6 +41,25 @@ public class SinglyLinkedList {
     }
 
 
+    public ListNode insertAtLast(ListNode head, int data) {
+        if (head == null) {
+            return new ListNode(data);
+        }
+
+        ListNode temp = head;
+
+        ListNode newNode = new ListNode(data);
+
+        while (temp.next != null) {
+
+            temp = temp.next;
+        }
+
+        temp.next = newNode;
+        return head;
+    }
+
+
     public static void main(String[] args) {
 
 
@@ -63,5 +82,9 @@ public class SinglyLinkedList {
 
         ListNode listNode = singlyLinkedList.insertAtStart(head, 35);
         singlyLinkedList.print(listNode);
+
+        System.out.println();
+        ListNode newLastNode = singlyLinkedList.insertAtLast(listNode, 47);
+        singlyLinkedList.print(newLastNode);
     }
 }
