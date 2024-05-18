@@ -212,11 +212,13 @@ public class SinglyLinkedList {
         ListNode newNode = new ListNode(data);
 
         while (current != null) {
-            if (current.data < newNode.data && newNode.data < current.next.data) {
+            if (current.data <= newNode.data && newNode.data <= current.next.data) {
 
+                ListNode temp = current.next;
                 current.next = newNode;
-                newNode.next = current.next;
+                newNode.next = temp;
             }
+
 
             current = current.next;
 
@@ -328,7 +330,7 @@ public class SinglyLinkedList {
         fourth4.next = fifth5;
 
         ListNode listAfterDeletingDuplicates = singlyLinkedList.deleteDuplicatesFromSorted(head2);
-
+        System.out.println("ZZZZ");
         singlyLinkedList.print(listAfterDeletingDuplicates);
 
 
@@ -338,14 +340,14 @@ public class SinglyLinkedList {
         ListNode fourth5 = new ListNode(25);
         ListNode fifth6 = new ListNode(33);
 
-
+        System.out.println("Printing list");
         head3.next = second3;
         second3.next = third4;
         third4.next = fourth5;
         fourth5.next = fifth6;
-
-        ListNode insertedNodeInSortedList = singlyLinkedList.insertNodeInSortedList(head3,23);
-        System.out.println();
+        System.out.println("Printing list");
+        ListNode insertedNodeInSortedList = singlyLinkedList.insertNodeInSortedList(head3, 23);
+        System.out.println("Printing list");
         singlyLinkedList.print(head3);
 
     }
