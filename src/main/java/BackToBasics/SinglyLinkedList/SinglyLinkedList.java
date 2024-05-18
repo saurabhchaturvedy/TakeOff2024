@@ -134,6 +134,78 @@ public class SinglyLinkedList {
     }
 
 
+    public ListNode reverse(ListNode head) {
+
+        ListNode current = head;
+        ListNode previous = null;
+        ListNode next = null;
+
+        while (current != null) {
+
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+
+        return previous;
+    }
+
+
+    public ListNode findMiddleNode(ListNode head) {
+
+        ListNode fastPtr = head;
+        ListNode slowPtr = head;
+
+        while (fastPtr != null && fastPtr.next != null) {
+
+            slowPtr = slowPtr.next;
+            fastPtr = fastPtr.next.next;
+        }
+
+        return slowPtr;
+    }
+
+
+    public ListNode nthNodeFromEnd(ListNode head, int n) {
+
+        ListNode mainPtr = head;
+        ListNode refPtr = head;
+        int count = 0;
+
+        while (count < n) {
+            refPtr = refPtr.next;
+            count++;
+        }
+
+        while (refPtr != null) {
+            refPtr = refPtr.next;
+            mainPtr = mainPtr.next;
+        }
+
+        return mainPtr;
+    }
+
+
+    public ListNode deleteDuplicatesFromSorted(ListNode head) {
+
+        ListNode current = head;
+
+        while (current != null && current.next != null) {
+
+            if (current.data == current.next.data) {
+                current.next = current.next.next;
+            } else {
+
+                current = current.next;
+            }
+        }
+
+
+        return head;
+    }
+
+
     public ListNode deleteNodeAtPosition(ListNode head, int position) {
 
         if (head == null) {
@@ -208,6 +280,35 @@ public class SinglyLinkedList {
         singlyLinkedList.print(listAfterDeletingAtPosition);
 
 
-        System.out.println("Is Elemnt 88 present ?? : "+singlyLinkedList.search(listAfterDeletingAtPosition,88));
+        System.out.println("Is Elemnt 88 present ?? : " + singlyLinkedList.search(listAfterDeletingAtPosition, 88));
+
+
+        ListNode reversedList = singlyLinkedList.reverse(listAfterDeletingAtPosition);
+        singlyLinkedList.print(reversedList);
+
+
+        ListNode middleNode = singlyLinkedList.findMiddleNode(reversedList);
+        System.out.println("Middle node is : " + middleNode.data);
+
+
+        ListNode nthNodeFromEnd = singlyLinkedList.nthNodeFromEnd(reversedList, 1);
+        System.out.println("Nth node is : " + nthNodeFromEnd.data);
+
+
+        ListNode head2 = new ListNode(1);
+        ListNode second2 = new ListNode(1);
+        ListNode third3 = new ListNode(2);
+        ListNode fourth4 = new ListNode(3);
+        ListNode fifth5 = new ListNode(3);
+
+
+        head2.next = second2;
+        second2.next = third3;
+        third3.next = fourth4;
+        fourth4.next = fifth5;
+
+        ListNode listAfterDeletingDuplicates = singlyLinkedList.deleteDuplicatesFromSorted(head2);
+
+        singlyLinkedList.print(listAfterDeletingDuplicates);
     }
 }
