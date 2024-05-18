@@ -206,6 +206,26 @@ public class SinglyLinkedList {
     }
 
 
+    public ListNode insertNodeInSortedList(ListNode head, int data) {
+
+        ListNode current = head;
+        ListNode newNode = new ListNode(data);
+
+        while (current != null) {
+            if (current.data < newNode.data && newNode.data < current.next.data) {
+
+                current.next = newNode;
+                newNode.next = current.next;
+            }
+
+            current = current.next;
+
+        }
+
+        return head;
+    }
+
+
     public ListNode deleteNodeAtPosition(ListNode head, int position) {
 
         if (head == null) {
@@ -310,5 +330,23 @@ public class SinglyLinkedList {
         ListNode listAfterDeletingDuplicates = singlyLinkedList.deleteDuplicatesFromSorted(head2);
 
         singlyLinkedList.print(listAfterDeletingDuplicates);
+
+
+        ListNode head3 = new ListNode(10);
+        ListNode second3 = new ListNode(17);
+        ListNode third4 = new ListNode(21);
+        ListNode fourth5 = new ListNode(25);
+        ListNode fifth6 = new ListNode(33);
+
+
+        head3.next = second3;
+        second3.next = third4;
+        third4.next = fourth5;
+        fourth5.next = fifth6;
+
+        ListNode insertedNodeInSortedList = singlyLinkedList.insertNodeInSortedList(head3,23);
+        System.out.println();
+        singlyLinkedList.print(head3);
+
     }
 }
