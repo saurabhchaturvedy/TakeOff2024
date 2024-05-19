@@ -206,6 +206,29 @@ public class SinglyLinkedList {
     }
 
 
+    public boolean loopExists(ListNode node)
+    {
+
+        ListNode slowPtr = node;
+        ListNode fastPtr = node;
+
+        while (fastPtr!=null && fastPtr.next!=null)
+        {
+
+            fastPtr = fastPtr.next.next;
+            slowPtr = slowPtr.next;
+
+            if(slowPtr==fastPtr)
+            {
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
+
     public ListNode insertNodeInSortedList(ListNode head, int data) {
 
         ListNode current = head;
@@ -372,5 +395,20 @@ public class SinglyLinkedList {
         ListNode listAfterDeletedNode = singlyLinkedList.deleteNodeInList(insertedNodeInSortedList, 23);
         System.out.println("List after deleting node :");
         singlyLinkedList.print(listAfterDeletedNode);
+
+
+        ListNode head6 = new ListNode(10);
+        ListNode second6 = new ListNode(17);
+        ListNode third6 = new ListNode(21);
+        ListNode fourth6 = new ListNode(25);
+        ListNode fifth7 = new ListNode(33);
+
+        head6.next = second6;
+        second6.next = third6;
+        fourth6.next = fifth7;
+        fifth7.next = third6;
+
+        boolean b = singlyLinkedList.loopExists(head6);
+        System.out.println(" Loop exists ? ::: "+b);
     }
 }
