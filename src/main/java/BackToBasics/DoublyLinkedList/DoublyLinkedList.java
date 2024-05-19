@@ -14,6 +14,16 @@ public class DoublyLinkedList {
     }
 
 
+    public ListNode insertNodeAtBeginning(ListNode node, int data) {
+
+        ListNode newNode = new ListNode(data);
+        newNode.next = node;
+        node.previous = newNode;
+
+        return newNode;
+    }
+
+
     public static void main(String[] args) {
 
 
@@ -30,5 +40,10 @@ public class DoublyLinkedList {
         DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
 
         doublyLinkedList.print(head);
+
+
+        ListNode insertNodeAtBeginning = doublyLinkedList.insertNodeAtBeginning(head, 55);
+        System.out.println();
+        doublyLinkedList.print(insertNodeAtBeginning);
     }
 }
