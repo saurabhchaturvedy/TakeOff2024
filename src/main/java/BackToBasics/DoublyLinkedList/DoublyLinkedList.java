@@ -3,6 +3,22 @@ package BackToBasics.DoublyLinkedList;
 public class DoublyLinkedList {
 
 
+    private ListNode head;
+    private ListNode tail;
+    private int length;
+
+
+    private static class ListNode {
+        private int data; // Can be any generic type
+        private ListNode next;
+        private ListNode previous;
+
+        public ListNode(int data) {
+            this.data = data;
+        }
+    }
+
+
     public void print(ListNode node) {
 
         ListNode current = node;
@@ -24,26 +40,40 @@ public class DoublyLinkedList {
     }
 
 
+    public ListNode insertNodeAtEnd(ListNode node, int data) {
+
+        ListNode newNode = new ListNode(data);
+        this.tail.next = newNode;
+        tail = newNode;
+        return node;
+    }
+
+
     public static void main(String[] args) {
 
-
-        ListNode head = new ListNode(10);
+        DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
+        doublyLinkedList.head = new ListNode(10);
         ListNode second = new ListNode(20);
         ListNode third = new ListNode(30);
 
-        head.next = second;
-        second.previous = head;
+        doublyLinkedList.head.next = second;
+        second.previous = doublyLinkedList.head;
 
         second.next = third;
         third.previous = second;
-
-        DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
-
-        doublyLinkedList.print(head);
+        doublyLinkedList.tail = third;
 
 
-        ListNode insertNodeAtBeginning = doublyLinkedList.insertNodeAtBeginning(head, 55);
+        doublyLinkedList.print(doublyLinkedList.head);
+
+
+        ListNode insertNodeAtBeginning = doublyLinkedList.insertNodeAtBeginning(doublyLinkedList.head, 55);
         System.out.println();
         doublyLinkedList.print(insertNodeAtBeginning);
+
+
+        ListNode nodeInsertedAtEnd = doublyLinkedList.insertNodeAtEnd(doublyLinkedList.head, 340);
+        System.out.println();
+        doublyLinkedList.print(nodeInsertedAtEnd);
     }
 }
