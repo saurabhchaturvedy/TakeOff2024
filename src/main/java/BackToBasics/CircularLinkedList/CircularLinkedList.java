@@ -46,8 +46,27 @@ public class CircularLinkedList {
         first.next = second;
         second.next = third;
         third.next = fourth;
+        fourth.next = first;
 
         last = fourth;
+    }
+
+
+    private void printCircularLinkedList() {
+
+        if (last == null) {
+            return;
+        }
+
+
+        ListNode first = last.next;
+
+        while (first != last) {
+
+            System.out.print(first.data + "  ");
+            first = first.next;
+        }
+        System.out.print(first.data + " ");
     }
 
 
@@ -55,5 +74,7 @@ public class CircularLinkedList {
 
         CircularLinkedList circularLinkedList = new CircularLinkedList();
         circularLinkedList.createCircularLinkedList();
+
+        circularLinkedList.printCircularLinkedList();
     }
 }
