@@ -1,5 +1,7 @@
 package BackToBasics.DoublyLinkedList;
 
+import java.util.NoSuchElementException;
+
 public class DoublyLinkedList2 {
 
 
@@ -142,6 +144,27 @@ public class DoublyLinkedList2 {
     }
 
 
+    public ListNode deleteFirst() {
+
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+
+        ListNode temp = head;
+        if (head == tail) {
+            tail = null;
+        } else {
+
+            head.next.prev = null;
+        }
+
+        head = head.next;
+        temp.next = null;
+        length--;
+        return temp;
+    }
+
+
     public static void main(String[] args) {
 
 
@@ -159,6 +182,11 @@ public class DoublyLinkedList2 {
         doublyLinkedList2.displayForward();
 
         doublyLinkedList2.insertAtIndex(77, 3);
+        doublyLinkedList2.displayForward();
+
+        ListNode listNode = doublyLinkedList2.deleteFirst();
+        System.out.println(" Deleted Node : " + listNode.data);
+
         doublyLinkedList2.displayForward();
     }
 }
