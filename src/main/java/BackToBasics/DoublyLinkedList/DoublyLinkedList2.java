@@ -21,6 +21,13 @@ public class DoublyLinkedList2 {
     }
 
 
+    public DoublyLinkedList2() {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
+
+
     public int getLength() {
         return length;
     }
