@@ -165,6 +165,28 @@ public class DoublyLinkedList2 {
     }
 
 
+    public ListNode deleteLast() {
+
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+
+        ListNode temp = tail;
+
+        if (head == tail) {
+            head = null;
+        } else {
+
+            tail.prev.next = null;
+        }
+
+        tail = tail.prev;
+        temp.prev = null;
+        length--;
+        return temp;
+    }
+
+
     public static void main(String[] args) {
 
 
@@ -186,6 +208,11 @@ public class DoublyLinkedList2 {
 
         ListNode listNode = doublyLinkedList2.deleteFirst();
         System.out.println(" Deleted Node : " + listNode.data);
+
+        doublyLinkedList2.displayForward();
+
+        ListNode lastNodeDeleted = doublyLinkedList2.deleteLast();
+        System.out.println(" Deleted Node : " + lastNodeDeleted.data);
 
         doublyLinkedList2.displayForward();
     }
