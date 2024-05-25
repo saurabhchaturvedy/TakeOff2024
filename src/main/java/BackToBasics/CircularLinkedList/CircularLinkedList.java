@@ -2,6 +2,8 @@ package BackToBasics.CircularLinkedList;
 
 import BackToBasics.SinglyLinkedList.ListNode;
 
+import java.util.NoSuchElementException;
+
 public class CircularLinkedList {
 
 
@@ -120,6 +122,29 @@ public class CircularLinkedList {
 
 
         length++;
+    }
+
+
+    public ListNode removeFirst() {
+
+        if (isEmpty()) {
+
+            throw new NoSuchElementException("Linked List is already empty :: ");
+        }
+
+
+        ListNode temp = last.next;
+
+        if (last.next == last) {
+            last = null;
+        } else {
+
+            last.next = temp.next;
+        }
+
+        temp.next = null;
+        length--;
+        return temp;
     }
 
 
