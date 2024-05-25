@@ -70,11 +70,33 @@ public class CircularLinkedList {
     }
 
 
+    public int length() {
+
+        if (last == null) {
+            return 0;
+        }
+
+        ListNode first = last.next;
+        int length = 1;
+
+        while (first != last) {
+            length++;
+            first = first.next;
+        }
+
+        return length;
+    }
+
+
     public static void main(String[] args) {
 
         CircularLinkedList circularLinkedList = new CircularLinkedList();
         circularLinkedList.createCircularLinkedList();
 
         circularLinkedList.printCircularLinkedList();
+
+        int length = circularLinkedList.length();
+        System.out.println();
+        System.out.println(" Length of the circular list is : " + length);
     }
 }
