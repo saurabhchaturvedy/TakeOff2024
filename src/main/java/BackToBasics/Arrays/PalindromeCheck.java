@@ -24,5 +24,13 @@ public class PalindromeCheck {
 
     public static void main(String[] args) {
 
+
+        String str = "radarx";
+
+        PalindromeCheck palindromeCheck = new PalindromeCheck();
+
+        boolean palindrome = palindromeCheck.isPalindrome(str);
+
+        System.out.println(" Is the String Palindrome ? ::: " + palindrome);
     }
 }
