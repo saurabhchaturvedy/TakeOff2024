@@ -187,6 +187,34 @@ public class DoublyLinkedList2 {
     }
 
 
+    public ListNode deleteNodeAtIndex(int index) {
+
+        if (!isValidIndex(index + 1)) {
+            throw new IndexOutOfBoundsException(" Index : " + index + " is invalid ");
+        }
+
+
+        ListNode current = head;
+
+        if (index == 0) {
+            return deleteFirst();
+        } else if (index == length - 1) {
+
+            return deleteLast();
+        } else {
+
+            for (int i = 0; i < index; i++) {
+                current = current.next;
+            }
+
+            current.prev.next = current.next;
+            current.next.prev = current.prev;
+        }
+
+        return current;
+    }
+
+
     public static void main(String[] args) {
 
 
@@ -213,6 +241,11 @@ public class DoublyLinkedList2 {
 
         ListNode lastNodeDeleted = doublyLinkedList2.deleteLast();
         System.out.println(" Deleted Node : " + lastNodeDeleted.data);
+
+        doublyLinkedList2.displayForward();
+
+        ListNode deletedNodeAtIndex = doublyLinkedList2.deleteNodeAtIndex(2);
+        System.out.println(" Deleted Node at Index : " + deletedNodeAtIndex.data);
 
         doublyLinkedList2.displayForward();
     }
