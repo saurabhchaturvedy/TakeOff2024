@@ -91,6 +91,26 @@ public class DoublyLinkedList2 {
     }
 
 
+    public void insertLast(int value)
+    {
+
+        ListNode newNode = new ListNode(value);
+
+        if(isEmpty())
+        {
+            head = newNode;
+        }
+        else {
+
+            tail.next = newNode;
+            newNode.prev = tail;
+        }
+
+        tail = newNode;
+        length++;
+    }
+
+
     public static void main(String[] args) {
 
 
@@ -102,5 +122,8 @@ public class DoublyLinkedList2 {
 
         doublyLinkedList2.displayForward();
         doublyLinkedList2.displayBackward();
+
+        doublyLinkedList2.insertLast(40);
+        doublyLinkedList2.displayForward();
     }
 }
