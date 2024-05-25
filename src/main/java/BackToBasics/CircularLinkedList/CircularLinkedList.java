@@ -104,6 +104,25 @@ public class CircularLinkedList {
     }
 
 
+    public void insertAtLast(int value) {
+
+        ListNode newNode = new ListNode(value);
+
+        if (last == null) {
+            last = newNode;
+            last.next = last;
+        } else {
+
+            newNode.next = last.next;
+            last.next = newNode;
+            last = newNode;
+        }
+
+
+        length++;
+    }
+
+
     public static void main(String[] args) {
 
         CircularLinkedList circularLinkedList = new CircularLinkedList();
@@ -117,6 +136,9 @@ public class CircularLinkedList {
 
 
         circularLinkedList.insertAtStart(36);
+        System.out.println();
+        circularLinkedList.printCircularLinkedList();
+        circularLinkedList.insertAtLast(72);
         System.out.println();
         circularLinkedList.printCircularLinkedList();
     }
