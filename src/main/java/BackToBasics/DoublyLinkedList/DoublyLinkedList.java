@@ -35,7 +35,8 @@ public class DoublyLinkedList {
         ListNode newNode = new ListNode(data);
         newNode.next = node;
         node.previous = newNode;
-
+        this.head = newNode;
+        length++;
         return newNode;
     }
 
@@ -45,7 +46,50 @@ public class DoublyLinkedList {
         ListNode newNode = new ListNode(data);
         this.tail.next = newNode;
         tail = newNode;
+        length++;
         return node;
+    }
+
+
+    public boolean isEmpty() {
+        return length == 0;
+    }
+
+
+    public int getLength() {
+        return length;
+    }
+
+
+    public boolean isValidIndex(int index) {
+        return index >= 0 && index <= length;
+    }
+
+
+    public ListNode insertAtIndex(int index, int data) {
+
+        if (!isValidIndex(index)) {
+            throw new IndexOutOfBoundsException("Index : " + index + " is not valid");
+        }
+
+        ListNode current = this.head;
+        ListNode newNode = new ListNode(data);
+
+        if (index == 0) {
+            insertNodeAtBeginning(this.head, data);
+        } else if (index == length) {
+
+            insertNodeAtEnd(this.head, data);
+        } else {
+
+            for (int j = 0; j < index; j++) {
+                current = current.next;
+            }
+
+
+        }
+
+        return null;
     }
 
 
@@ -75,5 +119,7 @@ public class DoublyLinkedList {
         ListNode nodeInsertedAtEnd = doublyLinkedList.insertNodeAtEnd(doublyLinkedList.head, 340);
         System.out.println();
         doublyLinkedList.print(nodeInsertedAtEnd);
+
+        System.out.println(" Lengt of te linked list :: " + doublyLinkedList.length);
     }
 }
