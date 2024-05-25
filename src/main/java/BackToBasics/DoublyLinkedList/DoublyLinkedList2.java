@@ -36,4 +36,40 @@ public class DoublyLinkedList2 {
     public boolean isEmpty() {
         return length == 0;
     }
+
+
+    public void displayForward() {
+        if (head == null) {
+            return;
+        }
+
+
+        ListNode temp = head;
+
+        while (temp != null) {
+
+            System.out.print(temp.next + " --> ");
+            temp = temp.next;
+        }
+
+        System.out.println(" null ");
+    }
+
+
+    public void displayBackward() {
+        if (head == null) {
+            return;
+        }
+
+
+        ListNode temp = tail;
+
+        while (temp != null) {
+
+            System.out.print(temp.next + " --> ");
+            temp = temp.prev;
+        }
+
+        System.out.println(" null ");
+    }
 }
