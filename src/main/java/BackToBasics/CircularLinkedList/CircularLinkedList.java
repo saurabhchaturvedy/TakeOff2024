@@ -148,6 +148,35 @@ public class CircularLinkedList {
     }
 
 
+    public ListNode removeLast() {
+
+        if (isEmpty()) {
+            throw new NoSuchElementException("Linked List is already Empty ::");
+        }
+
+        ListNode temp = last;
+
+        if (last.next == last) {
+            last = null;
+        } else {
+
+            ListNode secondLast = last;
+
+            while (secondLast.next != last) {
+
+                secondLast = secondLast.next;
+            }
+
+            secondLast.next = last.next;
+            last = secondLast;
+        }
+
+        temp.next = null;
+        length--;
+        return temp;
+    }
+
+
     public static void main(String[] args) {
 
         CircularLinkedList circularLinkedList = new CircularLinkedList();
@@ -165,6 +194,10 @@ public class CircularLinkedList {
         circularLinkedList.printCircularLinkedList();
         circularLinkedList.insertAtLast(72);
         System.out.println();
+        circularLinkedList.printCircularLinkedList();
+
+        System.out.println();
+        circularLinkedList.removeLast();
         circularLinkedList.printCircularLinkedList();
     }
 }
