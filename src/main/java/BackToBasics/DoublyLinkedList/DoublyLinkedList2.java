@@ -91,16 +91,13 @@ public class DoublyLinkedList2 {
     }
 
 
-    public void insertLast(int value)
-    {
+    public void insertLast(int value) {
 
         ListNode newNode = new ListNode(value);
 
-        if(isEmpty())
-        {
+        if (isEmpty()) {
             head = newNode;
-        }
-        else {
+        } else {
 
             tail.next = newNode;
             newNode.prev = tail;
@@ -108,6 +105,40 @@ public class DoublyLinkedList2 {
 
         tail = newNode;
         length++;
+    }
+
+
+    public boolean isValidIndex(int index) {
+        return index >= 0 && index <= length;
+    }
+
+
+    public void insertAtIndex(int value, int index) {
+
+        if (!isValidIndex(index)) {
+            throw new IndexOutOfBoundsException("Index : " + index + " is not valid !!");
+        }
+
+        ListNode current = head;
+        ListNode newNode = new ListNode(value);
+
+        if (index == 0) {
+            insertFirst(value);
+        } else if (index == length) {
+            insertLast(value);
+        } else {
+
+            for (int i = 0; i < index; i++) {
+                current = current.next;
+            }
+
+            newNode.next = current;
+            current.prev.next = newNode;
+            newNode.prev = current.prev;
+            current.prev = newNode;
+            length++;
+        }
+
     }
 
 
@@ -124,6 +155,10 @@ public class DoublyLinkedList2 {
         doublyLinkedList2.displayBackward();
 
         doublyLinkedList2.insertLast(40);
+        doublyLinkedList2.insertLast(60);
+        doublyLinkedList2.displayForward();
+
+        doublyLinkedList2.insertAtIndex(77, 3);
         doublyLinkedList2.displayForward();
     }
 }
