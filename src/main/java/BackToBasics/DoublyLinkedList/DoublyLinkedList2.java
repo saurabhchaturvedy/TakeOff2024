@@ -48,7 +48,7 @@ public class DoublyLinkedList2 {
 
         while (temp != null) {
 
-            System.out.print(temp.next + " --> ");
+            System.out.print(temp.data + " --> ");
             temp = temp.next;
         }
 
@@ -66,10 +66,41 @@ public class DoublyLinkedList2 {
 
         while (temp != null) {
 
-            System.out.print(temp.next + " --> ");
+            System.out.print(temp.data + " --> ");
             temp = temp.prev;
         }
 
         System.out.println(" null ");
+    }
+
+
+    public void insertFirst(int value) {
+
+        ListNode newNode = new ListNode(value);
+
+        if (isEmpty()) {
+            tail = newNode;
+        } else {
+
+            head.prev = newNode;
+        }
+
+        newNode.next = head;
+        head = newNode;
+        length++;
+    }
+
+
+    public static void main(String[] args) {
+
+
+        DoublyLinkedList2 doublyLinkedList2 = new DoublyLinkedList2();
+
+        doublyLinkedList2.insertFirst(10);
+        doublyLinkedList2.insertFirst(20);
+        doublyLinkedList2.insertFirst(30);
+
+        doublyLinkedList2.displayForward();
+        doublyLinkedList2.displayBackward();
     }
 }
