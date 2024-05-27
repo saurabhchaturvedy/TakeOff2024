@@ -38,10 +38,35 @@ public class BinaryTree {
             return;
         }
 
-        preOrder(root.left);
+        inOrder(root.left);
         System.out.print(root.data + " ");
-        preOrder(root.right);
+        inOrder(root.right);
 
+    }
+
+
+    public void inOrderIterative(TreeNode root) {
+
+        if (root == null) {
+            return;
+        }
+
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode temp = root;
+
+        while (!stack.isEmpty() || temp != null) {
+
+            if (temp != null) {
+
+                stack.push(temp);
+                temp = temp.left;
+            } else {
+
+                temp = stack.pop();
+                System.out.print(temp.data + " ");
+                temp = temp.right;
+            }
+        }
     }
 
 
@@ -85,7 +110,7 @@ public class BinaryTree {
         binaryTree.root.left.left = new TreeNode(4);
         binaryTree.root.left.right = new TreeNode(5);
         binaryTree.root.right.left = new TreeNode(6);
-        binaryTree.root.right.right = new TreeNode(7);
+        //  binaryTree.root.right.right = new TreeNode(7);
 
         System.out.println(" Pre Order Recursive :: ");
         binaryTree.preOrder(binaryTree.root);
@@ -98,5 +123,9 @@ public class BinaryTree {
         System.out.println();
         System.out.println(" In Order Recursive :: ");
         binaryTree.inOrder(binaryTree.root);
+
+        System.out.println();
+        System.out.println(" In Order Iterative :: ");
+        binaryTree.inOrderIterative(binaryTree.root);
     }
 }
