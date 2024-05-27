@@ -18,6 +18,18 @@ public class BinaryTree {
     }
 
 
+    public void preOrder(TreeNode root) {
+
+        if (root == null) {
+            return;
+        }
+
+        System.out.print(root.data + " ");
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+
+
     public static void main(String[] args) {
 
 
@@ -30,5 +42,8 @@ public class BinaryTree {
         binaryTree.root.left.right = new TreeNode(5);
         binaryTree.root.right.left = new TreeNode(6);
         binaryTree.root.right.right = new TreeNode(7);
+
+
+        binaryTree.preOrder(binaryTree.root);
     }
 }
