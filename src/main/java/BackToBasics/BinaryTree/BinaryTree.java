@@ -32,6 +32,19 @@ public class BinaryTree {
     }
 
 
+    public void inOrder(TreeNode root) {
+
+        if (root == null) {
+            return;
+        }
+
+        preOrder(root.left);
+        System.out.print(root.data + " ");
+        preOrder(root.right);
+
+    }
+
+
     public void preOrderIterative(TreeNode root) {
 
         if (root == null) {
@@ -81,5 +94,9 @@ public class BinaryTree {
 
         System.out.println(" Pre Order Iterative :: ");
         binaryTree.preOrderIterative(binaryTree.root);
+
+        System.out.println();
+        System.out.println(" In Order Recursive :: ");
+        binaryTree.inOrder(binaryTree.root);
     }
 }
