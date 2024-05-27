@@ -1,5 +1,7 @@
 package BackToBasics.BinaryTree;
 
+import java.util.Stack;
+
 public class BinaryTree {
 
 
@@ -30,6 +32,35 @@ public class BinaryTree {
     }
 
 
+    public void preOrderIterative(TreeNode root) {
+
+        if (root == null) {
+            return;
+        }
+
+
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+
+        while (!stack.isEmpty()) {
+
+            TreeNode temp = stack.pop();
+
+            System.out.print(temp.data + " ");
+
+            if (temp.right != null) {
+
+                stack.push(temp.right);
+            }
+
+            if (temp.left != null) {
+
+                stack.push(temp.left);
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
 
 
@@ -43,7 +74,12 @@ public class BinaryTree {
         binaryTree.root.right.left = new TreeNode(6);
         binaryTree.root.right.right = new TreeNode(7);
 
-
+        System.out.println(" Pre Order Recursive :: ");
         binaryTree.preOrder(binaryTree.root);
+
+        System.out.println();
+
+        System.out.println(" Pre Order Iterative :: ");
+        binaryTree.preOrderIterative(binaryTree.root);
     }
 }
