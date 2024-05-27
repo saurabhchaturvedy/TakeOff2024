@@ -1,5 +1,7 @@
 package BackToBasics.BinaryTree;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BinaryTree {
@@ -151,6 +153,34 @@ public class BinaryTree {
     }
 
 
+    public void levelOrderTraversal(TreeNode root) {
+
+        if (root == null) {
+            return;
+        }
+
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+
+            TreeNode temp = queue.poll();
+
+            System.out.print(temp.data + " ");
+
+            if (temp.left != null) {
+                queue.offer(temp.left);
+            }
+
+            if (temp.right != null) {
+
+                queue.offer(temp.right);
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
 
 
@@ -187,5 +217,9 @@ public class BinaryTree {
         System.out.println();
         System.out.println(" Post Order Iterative :: ");
         binaryTree.postOrderIterative(binaryTree.root);
+
+        System.out.println();
+        System.out.println(" Level Order Traversal :: ");
+        binaryTree.levelOrderTraversal(binaryTree.root);
     }
 }
