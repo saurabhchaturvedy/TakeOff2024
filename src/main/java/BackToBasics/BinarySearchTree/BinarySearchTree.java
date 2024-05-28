@@ -38,6 +38,22 @@ public class BinarySearchTree {
     }
 
 
+    private TreeNode search(TreeNode root, int value) {
+
+        if (root == null || root.data == value) {
+            return root;
+        }
+
+
+        if (value < root.data) {
+            return search(root.left, value);
+        } else {
+
+            return search(root.right, value);
+        }
+    }
+
+
     public void inOrder(TreeNode root) {
 
         if (root == null) {
@@ -63,6 +79,11 @@ public class BinarySearchTree {
 
 
         binarySearchTree.inOrder(insert2);
+
+        TreeNode search = binarySearchTree.search(insert2, 20);
+
+        System.out.println();
+        System.out.println("searched node is : " + search.data);
 
     }
 }
