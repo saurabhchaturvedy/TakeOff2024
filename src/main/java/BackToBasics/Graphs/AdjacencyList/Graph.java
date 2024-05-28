@@ -84,15 +84,17 @@ public class Graph {
     public static void main(String[] args) {
 
 
-        Graph graph = new Graph(4);
+        Graph graph = new Graph(5);
 
         graph.addEdge(0, 1);
         graph.addEdge(1, 2);
         graph.addEdge(2, 3);
         graph.addEdge(3, 0);
+        graph.addEdge(2, 4);
 
         System.out.println(graph);
 
+        System.out.print(" BFS Traversal :");
         graph.bfs(0);
     }
 }
