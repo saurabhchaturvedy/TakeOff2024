@@ -27,6 +27,10 @@ public class ShortestBoard {
     }
 
 
+
+
+
+
     public static void main(String[] args) {
 
         int[] arr = {11, 20, 15};
