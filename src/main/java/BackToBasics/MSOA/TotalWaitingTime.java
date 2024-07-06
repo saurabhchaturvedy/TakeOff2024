@@ -124,7 +124,7 @@ public class TotalWaitingTime {
     public static void main(String[] args) {
 
 
-        int[] T = {3, 1, 2};
+        int[] T = {1,2,3,4};
 
         TotalWaitingTime totalWaitingTime = new TotalWaitingTime();
 
