@@ -20,6 +20,25 @@ public class Fibonacci {
     }
 
 
+    public int topDown(int[] memo, int n) {
+
+        if (memo[n] == 0) {
+
+            if (n < 2) {
+                memo[n] = n;
+            } else {
+
+                int left = topDown(memo, n - 1);
+                int right = topDown(memo, n - 2);
+
+                memo[n] = left + right;
+            }
+        }
+
+        return memo[n];
+    }
+
+
     public static void main(String[] args) {
 
 
